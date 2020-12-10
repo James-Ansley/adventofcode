@@ -1,4 +1,4 @@
-with open('../input_files/day1') as f:
+with open('../input_files/day01') as f:
     data = {int(x) for x in f}
 
 for x in data:

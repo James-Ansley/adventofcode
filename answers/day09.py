@@ -1,4 +1,4 @@
-with open('../input_files/day9') as f:
+with open('../input_files/day09') as f:
     data = [int(x) for x in f]
 
 for i in range(25, len(data)):

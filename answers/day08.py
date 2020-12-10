@@ -16,7 +16,7 @@ def run():
     return accumulator, i >= len(data)
 
 
-with open('../input_files/day8') as f:
+with open('../input_files/day08') as f:
     data = re.findall(r'(.+?) ([+-]\d+)', f.read())
     data = [(instr, int(val)) for instr, val in data]
 

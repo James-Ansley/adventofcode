@@ -1,7 +1,7 @@
 from functools import reduce
 
 
-with open('../input_files/day6') as f:
+with open('../input_files/day06') as f:
     data = f.read().split('\n\n')
 
 print(sum(len(set(group.replace('\n', ''))) for group in data))

@@ -2,7 +2,7 @@ import re
 from collections import defaultdict
 
 
-with open('../input_files/day7') as f:
+with open('../input_files/day07') as f:
     data = f.read().split('\n')
 
 forward_edges = {}
