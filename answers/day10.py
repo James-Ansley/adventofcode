@@ -6,7 +6,7 @@ with open('../input_files/day10') as f:
     data = [0] + sorted(int(x) for x in f)
     data.append(data[-1] + 3)
 
-diffs = list(map(sub, data[1:], data))
+diffs = map(sub, data[1:], data)
 count = Counter(diffs)
 print(count[1] * count[3])
 
