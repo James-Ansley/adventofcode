@@ -1,6 +1,6 @@
 import re
 
-with open('../input_files/day19') as f:
+with open('input_files/day19') as f:
     rule_strings, messages = f.read().split('\n\n')
 
     rule_strings = dict(rule.split(': ') for rule in rule_strings.splitlines())

@@ -1,6 +1,6 @@
 import re
 
-with open('../input_files/day18') as f:
+with open('input_files/day18') as f:
     data = f.read().split('\n')
     data = [line.replace(' ', '') for line in data]
 

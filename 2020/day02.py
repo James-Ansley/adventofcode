@@ -1,7 +1,7 @@
 import re
 
 
-with open('../input_files/day02') as f:
+with open('input_files/day02') as f:
     data = re.findall(r'(\d+)-(\d+) (\w): (\w+)', f.read())
     data = [(int(fr), int(to), c, word) for fr, to, c, word in data]
 

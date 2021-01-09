@@ -1,6 +1,6 @@
 import re
 
-with open('../input_files/day14') as f:
+with open('input_files/day14') as f:
     data = re.findall(r'(.+) = (.+)', f.read())
 
 mask0s = 0

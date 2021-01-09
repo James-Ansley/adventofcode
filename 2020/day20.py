@@ -1,7 +1,7 @@
 import re
 from math import prod
 
-with open('../input_files/day20') as f:
+with open('input_files/day20') as f:
     tiles = dict(re.findall(r'Tile (\d+):\n([.#\n]+)', f.read()))
     tiles = {int(tile_id): [list(line) for line in tile.split()] for tile_id, tile in tiles.items()}
 

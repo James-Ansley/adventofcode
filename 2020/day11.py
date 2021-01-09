@@ -9,7 +9,7 @@ def step_cell(neighbours):
                     temp[i][j] = 0
 
 
-with open('../input_files/day11') as f:
+with open('input_files/day11') as f:
     data = [['.'] + list(line) + ['.'] for line in f.read().split()]
 
 width = len(data[0])

@@ -1,7 +1,7 @@
 import re
 from math import prod
 
-with open('../input_files/day16') as f:
+with open('input_files/day16') as f:
     rules, ticket, others = f.read().split('\n\n')
 
     rules = re.findall(r'(.+): (\d+)-(\d+) or (\d+)-(\d+)', rules)

@@ -1,4 +1,4 @@
-with open('../input_files/day23') as f:
+with open('input_files/day23') as f:
     starting_cups = [int(c) for c in f.read()]
 
 

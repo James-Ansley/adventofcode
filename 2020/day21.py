@@ -1,7 +1,7 @@
 import re
 from collections import Counter
 
-with open('../input_files/day21') as f:
+with open('input_files/day21') as f:
     foods = f.read().splitlines()
 
 count = Counter()

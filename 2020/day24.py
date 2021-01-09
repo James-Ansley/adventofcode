@@ -1,7 +1,7 @@
 from collections import defaultdict
 from operator import add
 
-with open('../input_files/day24') as f:
+with open('input_files/day24') as f:
     data = f.read()
     for direction, val in ('se', '1'), ('sw', '2'), ('nw', '4'), ('ne', '5'), ('e', '0'), ('w', '3'):
         data = data.replace(direction, val)

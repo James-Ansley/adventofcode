@@ -2,7 +2,7 @@ from collections import Counter
 from operator import sub
 
 
-with open('../input_files/day10') as f:
+with open('input_files/day10') as f:
     data = [0] + sorted(int(x) for x in f)
     data.append(data[-1] + 3)
 

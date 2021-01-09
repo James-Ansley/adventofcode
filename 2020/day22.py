@@ -1,7 +1,7 @@
 from collections import deque
 from itertools import islice
 
-with open('../input_files/day22') as f:
+with open('input_files/day22') as f:
     player1, player2 = f.read().split('\n\n')
     player1, player2 = player1.split('\n')[1:], player2.split('\n')[1:]
     player1, player2 = deque(map(int, player1)), deque(map(int, player2))

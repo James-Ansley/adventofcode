@@ -1,4 +1,4 @@
-with open('../input_files/day03') as f:
+with open('input_files/day03') as f:
     data = f.read().split()
 
 width = len(data[0])

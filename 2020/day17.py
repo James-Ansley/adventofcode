@@ -1,7 +1,7 @@
 from itertools import product
 from operator import add
 
-with open('../input_files/day17') as f:
+with open('input_files/day17') as f:
     data = [list(line) for line in f.read().split('\n')]
 
 

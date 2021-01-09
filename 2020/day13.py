@@ -1,6 +1,6 @@
 from math import prod
 
-with open('../input_files/day13') as f:
+with open('input_files/day13') as f:
     arrival, ids = f.read().split()
     arrival = int(arrival)
     ids = ids.split(',')

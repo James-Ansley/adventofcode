@@ -1,7 +1,7 @@
 import re
 
 
-with open('../input_files/day04') as f:
+with open('input_files/day04') as f:
     data = f.read().split('\n\n')
     data = [dict(entry.split(':') for entry in item.split()) for item in data]
 

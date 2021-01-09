@@ -1,4 +1,4 @@
-with open('../input_files/day25') as f:
+with open('input_files/day25') as f:
     card, door = f.read().split('\n')
     card, door = int(card), int(door)
 

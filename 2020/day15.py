@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-with open('../input_files/day15') as f:
+with open('input_files/day15') as f:
     data = f.read().split(',')
     data = [int(x) for x in data]
 
