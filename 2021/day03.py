@@ -4,7 +4,7 @@ with open('input_files/day03') as f:
 
 gamma = 0
 for i in range(bits):
-    gamma_bit = int(sum((x >> i) & 1 for x in data) > len(data) // 2)
+    gamma_bit = sum((x >> i) & 1 for x in data) > len(data) // 2
     gamma |= gamma_bit << i
 
 print(gamma * (2 ** bits - 1 ^ gamma))
