@@ -1,16 +1,10 @@
-from dataclasses import dataclass
-
-
-@dataclass
 class Board:
-    board: list[list[int]]
-    matches: list[list[bool]] = None
-    last_number: int = 0
-
-    def __post_init__(self):
+    def __init__(self, board):
+        self.board = board
         self.width = len(self.board[0])
         self.height = len(self.board)
         self.matches = [[False] * self.width for _ in range(self.height)]
+        self.last_number = 0
 
     def check_number(self, number):
         self.last_number = number
@@ -37,8 +31,7 @@ with open('input_files/day04') as f:
 
 numbers = [int(num) for num in numbers.split(',')]
 
-boards = [board.split('\n') for board in boards]
-boards = [[line.split() for line in board] for board in boards]
+boards = [[line.split() for line in board.split('\n')] for board in boards]
 boards = [[[int(elt) for elt in line] for line in board] for board in boards]
 boards = [Board(board) for board in boards]
 
