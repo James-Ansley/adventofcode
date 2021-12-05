@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 from itertools import repeat
 
@@ -19,8 +20,7 @@ def points(x1, y1, x2, y2):
 
 
 with open('input_files/day05') as f:
-    lines = [line.split(' -> ') for line in f]
-    lines = [[*start.split(','), *end.split(',')] for start, end in lines]
+    lines = re.findall(r'(\d+),(\d+) -> (\d+),(\d+)\n', f.read())
     lines = [[int(x) for x in line] for line in lines]
 
 orthogonal_overlaps = defaultdict(int)
