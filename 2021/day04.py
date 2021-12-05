@@ -22,7 +22,7 @@ class Board:
         for i in range(self.width):
             for j in range(self.height):
                 if not self.matches[i][j]:
-                    match_sum += int(self.board[i][j])
+                    match_sum += self.board[i][j]
         return match_sum
 
 
