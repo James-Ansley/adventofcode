@@ -1,29 +1,19 @@
 class Board:
     def __init__(self, board):
-        self.board = board
-        self.width = len(self.board[0])
-        self.height = len(self.board)
-        self.matches = [[False] * self.width for _ in range(self.height)]
+        self.orthogonals = [{*row} for row in board]
+        self.orthogonals += [{*col} for col in zip(*board)]
         self.last_number = 0
 
     def check_number(self, number):
         self.last_number = number
-        for i in range(self.width):
-            for j in range(self.height):
-                if self.board[i][j] == number:
-                    self.matches[i][j] = True
+        for orthogonal in self.orthogonals:
+            orthogonal.discard(number)
 
     def check_win(self):
-        return (any(all(row) for row in self.matches) or
-                any(all(col) for col in zip(*self.matches)))
+        return not all(orthogonal for orthogonal in self.orthogonals)
 
     def sum_score(self):
-        match_sum = 0
-        for i in range(self.width):
-            for j in range(self.height):
-                if not self.matches[i][j]:
-                    match_sum += self.board[i][j]
-        return match_sum
+        return sum(sum(orthogonal) for orthogonal in self.orthogonals) // 2
 
 
 with open('input_files/day04') as f:
@@ -31,8 +21,8 @@ with open('input_files/day04') as f:
 
 numbers = [int(num) for num in numbers.split(',')]
 
-boards = [[line.split() for line in board.split('\n')] for board in boards]
-boards = [[[int(elt) for elt in line] for line in board] for board in boards]
+boards = [board.split('\n') for board in boards]
+boards = [[[*map(int, row.split())] for row in board] for board in boards]
 boards = [Board(board) for board in boards]
 
 winners = []
@@ -43,7 +33,5 @@ for number in numbers:
             winners.append(boards[i])
             boards.pop(i)
 
-first = winners[0]
-last = winners[-1]
-print(first.sum_score() * first.last_number)
-print(last.sum_score() * last.last_number)
+print(winners[0].sum_score() * winners[0].last_number)
+print(winners[-1].sum_score() * winners[-1].last_number)
