@@ -1,11 +1,10 @@
 import re
 from collections import defaultdict
-from itertools import repeat
 
 
 def make_range(a, b, c, d):
     if a == b:
-        return repeat(a, abs(c - d) + 1)
+        return [a] * (abs(c - d) + 1)
     if a > b:
         return range(a, b - 1, -1)
     return range(a, b + 1)
