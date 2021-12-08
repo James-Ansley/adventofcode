@@ -5,11 +5,6 @@ with open('input_files/day08') as f:
     data = [(ins.split(), outs.split()) for ins, outs in data]
 
 uniques = 0
-for _, outs in data:
-    uniques += sum(len(output) in (2, 3, 4, 7) for output in outs)
-
-print(uniques)
-
 output_sums = 0
 for ins, outs in data:
     digits = [set()] * 10
@@ -38,6 +33,9 @@ for ins, outs in data:
     value = 0
     for out in outs:
         value = value * 10 + digits.index(set(out))
+        if value % 10 in (1, 4, 7, 8):
+            uniques += 1
     output_sums += value
 
+print(uniques)
 print(output_sums)
