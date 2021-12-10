@@ -4,38 +4,31 @@ from bisect import insort
 def get_mismatches(line):
     brackets = {'(': ')', '[': ']', '<': '>', '{': '}'}
     stack = []
-    for i in range(len(line)):
-        if line[i] in brackets:
+    for i, char in enumerate(line):
+        if char in brackets:
             stack.append(i)
-        if line[i] in brackets.values():
-            open_index = stack.pop()
-            if brackets[line[open_index]] != line[i]:
-                return [line[i]]
+        if char in brackets.values():
+            if brackets[line[stack.pop()]] != char:
+                return [char]
     return [brackets[line[i]] for i in reversed(stack)]
 
 
 with open('input_files/day10') as f:
-    data = [line for line in f]
+    data = list(f)
 
-weights = {
-    ')': 3,
-    ']': 57,
-    '}': 1197,
-    '>': 25137,
-}
-
-order = [None, ')', ']', '}', '>']
+mismatch_weights = {')': 3, ']': 57, '}': 1197, '>': 25137}
+closing_weights = {')': 1, ']': 2, '}': 3, '>': 4}
 
 mismatch_score = 0
 scores = []
 for line in data:
     mismatches = get_mismatches(line)
     if len(mismatches) == 1:
-        mismatch_score += weights[mismatches[0]]
+        mismatch_score += mismatch_weights[mismatches[0]]
     else:
         partial = 0
         for bracket in mismatches:
-            partial = partial * 5 + order.index(bracket)
+            partial = partial * 5 + closing_weights[bracket]
         insort(scores, partial)
 
 print(mismatch_score)
