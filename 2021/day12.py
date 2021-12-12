@@ -10,7 +10,7 @@ def dfs(last, seen, edges, repeats):
         if not (edge.islower() and edge in seen):
             paths += dfs(edge, seen | {edge}, edges, repeats)
         elif edge.islower() and edge in seen and repeats:
-            paths += dfs(edge, seen | {edge}, edges, False)
+            paths += dfs(edge, seen, edges, False)
     return paths
 
 
