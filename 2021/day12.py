@@ -2,24 +2,15 @@ import re
 from collections import defaultdict
 
 
-def dfs(path, edges):
-    if path[-1] == 'end':
+def dfs(last, seen, edges, repeats):
+    if last == 'end':
         return 1
     paths = 0
-    for edge in edges[path[-1]]:
-        if not (edge.islower() and edge in path):
-            paths += dfs(path + (edge,), edges)
-    return paths
-
-
-def dfs_repeats(path, edges):
-    if path[-1] == 'end':
-        return 1
-    paths = 0
-    for edge in edges[path[-1]]:
-        has_double = any(path.count(v) == 2 for v in path if v.islower())
-        if not (edge.islower() and edge in path and has_double):
-            paths += dfs_repeats(path + (edge,), edges)
+    for edge in edges[last]:
+        if not (edge.islower() and edge in seen):
+            paths += dfs(edge, seen | {edge}, edges, repeats)
+        elif edge.islower() and edge in seen and repeats:
+            paths += dfs(edge, seen | {edge}, edges, False)
     return paths
 
 
@@ -33,5 +24,5 @@ for v1, v2 in data:
     if v1 != 'start':
         edges[v2].append(v1)
 
-print(dfs(('start',), edges))
-print(dfs_repeats(('start',), edges))
+print(dfs('start', set(), edges, False))
+print(dfs('start', set(), edges, True))
