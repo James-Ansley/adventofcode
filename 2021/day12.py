@@ -24,5 +24,5 @@ for v1, v2 in data:
     if v1 != 'start':
         edges[v2].append(v1)
 
-print(dfs('start', set(), edges, False))
-print(dfs('start', set(), edges, True))
+print(dfs('start', frozenset(), edges, False))
+print(dfs('start', frozenset(), edges, True))
