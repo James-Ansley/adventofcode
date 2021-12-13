@@ -17,7 +17,7 @@ def print_grid(points):
     max_x = max(x for x, _ in points) + 1
     max_y = max(y for _, y in points) + 1
     for y in range(max_y):
-        row = ['#' if (x, y) in points else ' ' for x in range(max_x)]
+        row = ('#' if (x, y) in points else ' ' for x in range(max_x))
         print(' '.join(row))
 
 
