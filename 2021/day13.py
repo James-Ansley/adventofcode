@@ -1,13 +1,13 @@
 import re
 
 
-def fold(axis, ordinate, points):
+def fold(axis, coordinate, points):
     new_points = set()
     for x, y in points:
-        if axis == 'x' and x > ordinate:
-            new_points.add((ordinate * 2 - x, y))
-        elif axis == 'y' and y > ordinate:
-            new_points.add((x, ordinate * 2 - y))
+        if axis == 'x' and x > coordinate:
+            new_points.add((coordinate * 2 - x, y))
+        elif axis == 'y' and y > coordinate:
+            new_points.add((x, coordinate * 2 - y))
         else:
             new_points.add((x, y))
     return new_points
@@ -27,10 +27,10 @@ with open('input_files/day13') as f:
 points = re.findall(r'(\d+),(\d+)', points)
 points = {(int(x), int(y)) for x, y in points}
 folds = re.findall(r'fold along ([xy])=(\d+)', folds)
-folds = [(x, int(y)) for x, y in folds]
+folds = [(axis, int(coordinate)) for axis, coordinate in folds]
 
 print(len(fold(*folds[0], points)))
 
-for axis, ordinate in folds:
-    points = fold(axis, ordinate, points)
+for axis, coordinate in folds:
+    points = fold(axis, coordinate, points)
 print_grid(points)
