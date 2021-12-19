@@ -7,9 +7,8 @@ def explode(pair):
     stack = []
     depth, to_add, last_digit = 0, 0, None
     while pair:
-        char = pair.popleft()
-        stack.append(char)
-        if char == '[':
+        stack.append(pair.popleft())
+        if stack[-1] == '[':
             if depth < 4:
                 depth += 1
             else:
@@ -19,9 +18,9 @@ def explode(pair):
                 to_add = right
                 stack[-1] = 0
                 last_digit = len(stack) - 1
-        elif char == ']':
+        elif stack[-1] == ']':
             depth -= 1
-        elif isinstance(char, int):
+        elif isinstance(stack[-1], int):
             stack[-1] += to_add
             to_add = 0
             last_digit = len(stack) - 1
