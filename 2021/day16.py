@@ -7,7 +7,7 @@ OPS = {
     1: math.prod,
     2: min,
     3: max,
-    4: lambda x: next(x),
+    4: next,
     5: lambda x: operator.gt(*x),
     6: lambda x: operator.lt(*x),
     7: lambda x: operator.eq(*x),
@@ -22,7 +22,7 @@ class Bits:
     def pop(self, n):
         self.num_bits -= n
         value = self.data >> self.num_bits
-        self.data &= (2 ** self.num_bits - 1)
+        self.data &= 2 ** self.num_bits - 1
         return value
 
 
