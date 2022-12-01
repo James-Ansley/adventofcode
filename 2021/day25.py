@@ -1,21 +1,12 @@
-from pprint import pprint
-
-DELTAS = {
-    ">": (0, 1),
-    "v": (1, 0),
-}
-
-
 def adjacent(i, j, di, dj):
     return (i + di) % HEIGHT, (j + dj) % WIDTH
 
 
-def step_facing(grid, facing):
+def step_facing(grid, facing, di, dj):
     next_grid = [line[:] for line in grid]
     for i, line in enumerate(grid):
         for j, elt in enumerate(line):
             if elt == facing:
-                di, dj = DELTAS[elt]
                 i1, j1 = adjacent(i, j, di, dj)
                 if grid[i1][j1] == ".":
                     next_grid[i][j] = "."
@@ -24,8 +15,8 @@ def step_facing(grid, facing):
 
 
 def step(grid):
-    grid = step_facing(grid, ">")
-    grid = step_facing(grid, "v")
+    grid = step_facing(grid, ">", 0, 1)
+    grid = step_facing(grid, "v", 1, 0)
     return grid
 
 
@@ -45,7 +36,3 @@ while last_grid != current_grid:
     current_grid, last_grid = step(current_grid), current_grid
 
 print(steps)
-
-
-
-

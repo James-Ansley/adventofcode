@@ -46,7 +46,6 @@ def search(state):
             if total < seen[new_state]:
                 seen[new_state] = total
                 heapq.heappush(h, (total, new_state))
-    return None
 
 
 @dataclass(frozen=True, order=True)
