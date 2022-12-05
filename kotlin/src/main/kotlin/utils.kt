@@ -11,4 +11,4 @@ fun readInts(path: String): List<Int> =
 
 
 fun <T> List<List<T>>.transpose(): List<List<T>> =
-    this[0].indices.map { j -> this.indices.map { i -> this[i][j] } }
+    this[0].indices.map { j -> this.indices.reversed().map { i -> this[i][j] } }

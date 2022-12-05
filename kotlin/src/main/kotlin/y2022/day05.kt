@@ -9,12 +9,13 @@ fun main() {
     val width = crateData.lines().maxOf { it.length }
     val crates = crateData.lines()
         .dropLast(1)
-        .reversed()
         .map { it.padEnd(width, ' ') }
         .map { it.slice(1 until it.length step 4) }
         .map { it.toList() }
         .transpose()
         .map { it.filter { char -> !char.isWhitespace() } }
+
+    println(crates)
 
     val moveRegex = "move (\\d+) from (\\d+) to (\\d+)".toRegex()
     val moves = moveRegex.findAll(moveData)
