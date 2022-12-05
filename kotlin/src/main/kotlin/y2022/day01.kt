@@ -5,9 +5,7 @@ import read
 fun main() {
     val data = read("y2022/day01")
         .split("\n\n")
-        .map { it.lines() }
-        .map { pack -> pack.map { it.toInt() } }
-        .map { it.sum() }
+        .map { it.lines().sumOf { item -> item.toInt() } }
         .sortedDescending()
 
     println(data[0])

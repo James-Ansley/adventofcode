@@ -8,8 +8,11 @@ fun main() {
     val re = "(\\d+)-(\\d+),(\\d+)-(\\d+)".toRegex()
     val data = read("y2022/day04")
     val matches = re.findAll(data)
-        .map { it.groupValues.drop(1) }
-        .map { it.map { e -> e.toInt() } }
+        .map {
+            it.groupValues
+                .drop(1)
+                .map { e -> e.toInt() }
+        }
 
     val contained = matches.count { (a, b, c, d) -> a <= c && d <= b || c <= a && b <= d }
     val overlap = matches.count { (a, b, c, d) -> max(a, c) <= min(b, d) }

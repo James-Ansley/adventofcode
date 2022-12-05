@@ -9,18 +9,18 @@ fun main() {
     val width = crateData.lines().maxOf { it.length }
     val crates = crateData.lines()
         .dropLast(1)
-        .map { it.padEnd(width, ' ') }
-        .map { it.slice(1 until it.length step 4) }
-        .map { it.toList() }
+        .map {
+            it.padEnd(width, ' ')
+                .slice(1 until width step 4)
+                .toList()
+        }
         .transpose()
         .map { it.filter { char -> !char.isWhitespace() } }
 
-    println(crates)
-
     val moveRegex = "move (\\d+) from (\\d+) to (\\d+)".toRegex()
     val moves = moveRegex.findAll(moveData)
-        .map { it.groupValues.drop(1) }
-        .map { vals -> vals.map { it.toInt() } }
+        .map { it.groupValues.drop(1)}
+        .map { it.map { e -> e.toInt() }  }
         .map { (amt, from, to) -> Triple(amt, from - 1, to - 1) }
 
     val crateMover9000 = crates.map { it.toMutableList() }.toMutableList()
