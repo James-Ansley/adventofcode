@@ -6,7 +6,7 @@ with open("input_files/day05", "r") as f:
 
     crates = crates.splitlines()[:-1]
     crates = [crate[1::4] for crate in crates]
-    crates = [*zip_longest(*crates[::-1], fillvalue=" ")]
+    crates = zip_longest(*crates[::-1], fillvalue=" ")
     crates = [[e for e in crate if not e.isspace()] for crate in crates]
 
     moves = re.findall(r"move (\d+) from (\d+) to (\d+)", moves)
