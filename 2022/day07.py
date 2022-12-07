@@ -1,13 +1,5 @@
 import re
-from dataclasses import dataclass, field
 from itertools import chain, repeat
-
-
-@dataclass
-class Directory:
-    size: int
-    children: list["Directory"] = field(default_factory=list)
-
 
 with open("input_files/day07", "r") as f:
     data = f.read().splitlines()
@@ -15,20 +7,18 @@ with open("input_files/day07", "r") as f:
 data = chain(data, repeat("$ cd .."))
 
 sizes = []
-stack = [Directory(0)]
+stack = [0]
 while stack:
     line = next(data)
     if line == "$ cd ..":
         child = stack.pop()
         if stack:
-            sizes.append(child.size)
-            stack[-1].size += child.size
-    elif cd := re.match(r"\$ cd (.+)", line):
-        directory = Directory(0)
-        stack[-1].children.append(directory)
-        stack.append(directory)
+            sizes.append(child)
+            stack[-1] += child
+    elif cd := re.match(r"\$ cd .+", line):
+        stack.append(0)
     elif file := re.match(r"(\d+) .+", line):
-        stack[-1].size += int(file.group(1))
+        stack[-1] += int(file.group(1))
 
 space_needed = 30_000_000 - (70_000_000 - sizes[-1])
 sizes = sorted(sizes)
