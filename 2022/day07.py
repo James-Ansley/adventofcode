@@ -1,16 +1,13 @@
 import re
-from itertools import chain, repeat
 
 with open("input_files/day07", "r") as f:
-    data = f.read().splitlines()
-
-data = chain(data, repeat("$ cd .."))
+    data = iter(f.read().splitlines())
 
 sizes = []
 stack = [0]
 while stack:
-    line = next(data)
-    if line == "$ cd ..":
+    line = next(data, None)
+    if line is None or line == "$ cd ..":
         child = stack.pop()
         if stack:
             sizes.append(child)
