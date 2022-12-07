@@ -6,8 +6,8 @@ with open("input_files/day07", "r") as f:
 sizes = []
 stack = [0]
 while stack:
-    line = next(data, None)
-    if line is None or line == "$ cd ..":
+    line = next(data, "$ cd ..")
+    if line == "$ cd ..":
         child = stack.pop()
         if stack:
             sizes.append(child)
