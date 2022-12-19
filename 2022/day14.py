@@ -4,7 +4,7 @@ from itertools import count, pairwise, product
 
 def fall(sx, sy, grid, lowest_point):
     if (500, 0) in grid:
-        return True, grid
+        return None
     for y in range(sy, lowest_point + 1):
         if (sx, y) in grid:
             if (sx - 1, y) not in grid:
@@ -12,16 +12,17 @@ def fall(sx, sy, grid, lowest_point):
             elif (sx + 1, y) not in grid:
                 return fall(sx + 1, y, grid, lowest_point)
             else:
-                return False, grid | {(sx, y - 1)}
-    return True, grid
+                return sx, y - 1
 
 
 def run(grid):
+    grid = set(grid)
     lowest_point = max(p[1] for p in grid)
     for i in count(0):
-        is_stopped, grid = fall(500, 0, grid, lowest_point)
-        if is_stopped:
+        stopped_at = fall(500, 0, grid, lowest_point)
+        if stopped_at is None:
             return i
+        grid.add(stopped_at)
 
 
 with open("input_files/day14", "r") as f:
