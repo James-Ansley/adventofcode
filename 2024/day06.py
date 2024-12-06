@@ -26,8 +26,8 @@ def run(block=None):
 
 blocks, _ = run()
 total = 0
-for i, j in blocks:
-    total += run((i, j))[1]
+for block in blocks:
+    total += run(block)[1]
 
 print(len(blocks))
 print(total)
