@@ -1,5 +1,4 @@
 from collections import defaultdict
-from itertools import product
 
 with open("input_files/day06", "r") as f:
     data = f.read()
@@ -22,13 +21,13 @@ def run(block=None):
             di, dj = dj, -di
         else:
             i, j = i1, j1
-    return len(seen), 0 <= i < width and 0 <= j < height
+    return seen, 0 <= i < width and 0 <= j < height
 
 
+blocks, _ = run()
 total = 0
-for i, j in product(range(height), range(width)):
-    if grid[i][j] != "#" and (i, j) != start:
-        total += run((i, j))[1]
+for i, j in blocks:
+    total += run((i, j))[1]
 
-print(run()[0])
+print(len(blocks))
 print(total)
