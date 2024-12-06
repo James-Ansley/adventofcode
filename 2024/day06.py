@@ -25,9 +25,7 @@ def run(block=None):
 
 
 blocks, _ = run()
-total = 0
-for block in blocks:
-    total += run(block)[1]
+total = sum(run(b)[1] for b in blocks)
 
 print(len(blocks))
 print(total)
