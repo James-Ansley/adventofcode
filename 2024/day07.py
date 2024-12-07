@@ -4,15 +4,14 @@ from operator import add, mul
 
 def run(equations, ops):
     result = 0
-    for equation in equations:
-        target, first, *rest = equation
+    for target, first, *rest in equations:
         queue = [first]
         for value in rest:
-            values = []
-            for total in queue:
-                for op in ops:
-                    values.append(op(total, value))
-            queue = values
+            queue = [
+                op(total, value)
+                for total in queue
+                for op in ops
+            ]
         if target in queue:
             result += target
     return result
