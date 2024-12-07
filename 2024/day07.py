@@ -11,7 +11,7 @@ def run(equations, ops):
                 op(total, value)
                 for total in queue
                 for op in ops
-                if total < target
+                if total <= target
             ]
         if target in queue:
             result += target
