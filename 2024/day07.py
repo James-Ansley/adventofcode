@@ -18,11 +18,16 @@ def run(equations, ops):
     return result
 
 
+def concat(a, b):
+    i = 10
+    while i <= b:
+        i *= 10
+    return a * i + b
+
+
 with open("input_files/day07", "r") as f:
     data = [re.findall(r"(\d+)", line) for line in f]
     data = [[int(e) for e in line] for line in data]
-
-concat = lambda e1, e2: int(str(e1) + str(e2))
 
 print(run(data, (add, mul)))
 print(run(data, (add, mul, concat)))
