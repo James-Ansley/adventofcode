@@ -18,7 +18,7 @@ def run(equations, ops):
 
 
 with open("input_files/day07", "r") as f:
-    data = [re.split(r":? ", line.strip()) for line in f]
+    data = [re.findall(r"(\d+)", line) for line in f]
     data = [[int(e) for e in line] for line in data]
 
 concat = lambda e1, e2: int(str(e1) + str(e2))
